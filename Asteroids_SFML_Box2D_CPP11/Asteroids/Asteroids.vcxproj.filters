@@ -225,6 +225,9 @@
     <ClCompile Include="Game\Level2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Srinath%27s Test\AsteroidsGameWithBhanuGit\Asteroids_SFML_Box2D_CPP11\Asteroids\Level3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\GameObject.h">
@@ -681,6 +684,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game\Level2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Srinath%27s Test\AsteroidsGameWithBhanuGit\Asteroids_SFML_Box2D_CPP11\Asteroids\Level3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
