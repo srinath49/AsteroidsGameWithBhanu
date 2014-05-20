@@ -3,7 +3,7 @@
 
 
 extern b2World* phyxWorld; 
-float meterToPixel = 30.0; //50 pixels to a meter
+float meterToPixel = 50.0; //50 pixels to a meter
 
 
 GameObject::GameObject() : 
