@@ -153,6 +153,7 @@
     <ClCompile Include="Game\MenuScreenLevel.cpp" />
     <ClCompile Include="Game\MediumRock.cpp" />
     <ClCompile Include="Game\SmallRock.cpp" />
+    <ClCompile Include="Game\Level2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frameworks\box2d\box2d.h" />
@@ -306,6 +307,7 @@
     <ClInclude Include="Game\MenuScreenLevel.h" />
     <ClInclude Include="Game\MediumRock.h" />
     <ClInclude Include="Game\SmallRock.h" />
+    <ClInclude Include="Game\Level2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\BG_Plain.png" />
