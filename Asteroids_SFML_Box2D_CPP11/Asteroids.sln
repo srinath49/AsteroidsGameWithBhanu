@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Asteroids", "Asteroids\Asteroids.vcxproj", "{F597CD98-22D6-43B6-AA05-96EBEA87DCF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F597CD98-22D6-43B6-AA05-96EBEA87DCF3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F597CD98-22D6-43B6-AA05-96EBEA87DCF3}.Debug|Win32.Build.0 = Debug|Win32
+		{F597CD98-22D6-43B6-AA05-96EBEA87DCF3}.Release|Win32.ActiveCfg = Release|Win32
+		{F597CD98-22D6-43B6-AA05-96EBEA87DCF3}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

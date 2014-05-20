@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F597CD98-22D6-43B6-AA05-96EBEA87DCF3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Asteroids</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./;./Frameworks;./Frameworks/SFML/include;./Frameworks/Box2D;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>./Frameworks/Box2D/lib/debug;./Frameworks/SFML/lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Box2D-d.lib;sfml-main.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-network-d.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./;./Frameworks;./Frameworks/SFML/include;./Frameworks/Box2D;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>./Frameworks/Box2D/lib/release;./Frameworks/SFML/lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Box2D.lib;sfml-main.lib;sfml-graphics.lib;sfml-system.lib;sfml-audio.lib;sfml-window.lib;sfml-network.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Frameworks\Box2D\Collision\b2BroadPhase.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\b2CollideCircle.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\b2CollideEdge.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\b2CollidePolygon.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\b2Collision.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\b2Distance.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\b2DynamicTree.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\b2TimeOfImpact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\Shapes\b2ChainShape.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\Shapes\b2CircleShape.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\Shapes\b2EdgeShape.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Collision\Shapes\b2PolygonShape.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Common\b2BlockAllocator.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Common\b2Draw.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Common\b2Math.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Common\b2Settings.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Common\b2StackAllocator.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Common\b2Timer.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\b2Body.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\b2ContactManager.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\b2Fixture.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\b2Island.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\b2World.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\b2WorldCallbacks.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2CircleContact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2Contact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2ContactSolver.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Contacts\b2PolygonContact.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2DistanceJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2FrictionJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2GearJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2Joint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2MotorJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2MouseJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2PrismaticJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2PulleyJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2RevoluteJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2RopeJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
+    <ClCompile Include="Frameworks\Box2D\Rope\b2Rope.cpp" />
+    <ClCompile Include="Game\GameLevel.cpp" />
+    <ClCompile Include="Game\Bullet.cpp" />
+    <ClCompile Include="Game\AsteroidRock.cpp" />
+    <ClCompile Include="Game\BigRock.cpp" />
+    <ClCompile Include="Engine\AnimatedSprite.cpp" />
+    <ClCompile Include="Engine\Animation.cpp" />
+    <ClCompile Include="Engine\CollisionListener.cpp" />
+    <ClCompile Include="Engine\GameObject.cpp" />
+    <ClCompile Include="Engine\Layer.cpp" />
+    <ClCompile Include="Engine\Level.cpp" />
+    <ClCompile Include="Engine\LevelManager.cpp" />
+    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\Texture.cpp" />
+    <ClCompile Include="Engine\TextureManager.cpp" />
+    <ClCompile Include="Game\Background.cpp" />
+    <ClCompile Include="Game\Level1.cpp" />
+    <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="EngineStart.cpp" />
+    <ClCompile Include="Engine\MyQueryCallback.cpp" />
+    <ClCompile Include="Game\MenuScreenLevel.cpp" />
+    <ClCompile Include="Game\MediumRock.cpp" />
+    <ClCompile Include="Game\SmallRock.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="frameworks\box2d\box2d.h" />
+    <ClInclude Include="frameworks\box2d\collision\b2broadphase.h" />
+    <ClInclude Include="frameworks\box2d\collision\b2collision.h" />
+    <ClInclude Include="frameworks\box2d\collision\b2distance.h" />
+    <ClInclude Include="frameworks\box2d\collision\b2dynamictree.h" />
+    <ClInclude Include="frameworks\box2d\collision\b2timeofimpact.h" />
+    <ClInclude Include="frameworks\box2d\collision\shapes\b2chainshape.h" />
+    <ClInclude Include="frameworks\box2d\collision\shapes\b2circleshape.h" />
+    <ClInclude Include="frameworks\box2d\collision\shapes\b2edgeshape.h" />
+    <ClInclude Include="frameworks\box2d\collision\shapes\b2polygonshape.h" />
+    <ClInclude Include="frameworks\box2d\collision\shapes\b2shape.h" />
+    <ClInclude Include="frameworks\box2d\common\b2blockallocator.h" />
+    <ClInclude Include="frameworks\box2d\common\b2draw.h" />
+    <ClInclude Include="frameworks\box2d\common\b2growablestack.h" />
+    <ClInclude Include="frameworks\box2d\common\b2math.h" />
+    <ClInclude Include="frameworks\box2d\common\b2settings.h" />
+    <ClInclude Include="frameworks\box2d\common\b2stackallocator.h" />
+    <ClInclude Include="frameworks\box2d\common\b2timer.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\b2body.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\b2contactmanager.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\b2fixture.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\b2Island.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\b2timestep.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\b2world.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\b2worldcallbacks.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\Contacts\b2CircleContact.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\contacts\b2contact.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\Contacts\b2ContactSolver.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.h" />
+    <ClInclude Include="Frameworks\Box2D\Dynamics\Contacts\b2PolygonContact.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2distancejoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2frictionjoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2gearjoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2joint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2motorjoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2mousejoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2prismaticjoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2pulleyjoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2revolutejoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2ropejoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2weldjoint.h" />
+    <ClInclude Include="frameworks\box2d\dynamics\joints\b2wheeljoint.h" />
+    <ClInclude Include="Frameworks\Box2D\Rope\b2Rope.h" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\Export.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\Listener.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\Music.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\Sound.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\SoundBuffer.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\SoundBufferRecorder.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\SoundRecorder.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\SoundSource.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Audio\SoundStream.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\config.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\blendmode.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\circleshape.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\color.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\convexshape.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\drawable.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\export.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\font.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\glyph.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\image.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\primitivetype.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\rect.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\rectangleshape.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\renderstates.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\rendertarget.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\rendertexture.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\renderwindow.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\shader.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\shape.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\sprite.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\text.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\texture.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\transform.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\transformable.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\vertex.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\vertexarray.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\graphics\view.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\Export.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\Ftp.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\Http.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\IpAddress.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\Packet.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\Socket.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\SocketHandle.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\SocketSelector.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\TcpListener.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\TcpSocket.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\Network\UdpSocket.hpp" />
+    <ClInclude Include="Frameworks\SFML\include\SFML\OpenGL.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\clock.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\err.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\export.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\inputstream.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\lock.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\mutex.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\noncopyable.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\sleep.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\string.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\thread.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\threadlocal.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\threadlocalptr.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\time.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\utf.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\vector2.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\system\vector3.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\context.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\contextsettings.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\event.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\export.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\glresource.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\joystick.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\keyboard.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\mouse.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\videomode.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\window.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\windowhandle.hpp" />
+    <ClInclude Include="frameworks\sfml\include\sfml\window\windowstyle.hpp" />
+    <ClInclude Include="Game\GameLevel.h" />
+    <ClInclude Include="Game\Bullet.h" />
+    <ClInclude Include="Game\AsteroidRock.h" />
+    <ClInclude Include="Game\BigRock.h" />
+    <ClInclude Include="Engine\AnimatedSprite.hpp" />
+    <ClInclude Include="Engine\Animation.h" />
+    <ClInclude Include="Engine\BasicMath.h" />
+    <ClInclude Include="Engine\CollisionListener.h" />
+    <ClInclude Include="Engine\GameObject.h" />
+    <ClInclude Include="Engine\Layer.h" />
+    <ClInclude Include="Engine\Level.h" />
+    <ClInclude Include="Engine\LevelManager.h" />
+    <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Engine\Texture.h" />
+    <ClInclude Include="Engine\TextureManager.h" />
+    <ClInclude Include="Game\Background.h" />
+    <ClInclude Include="Game\Level1.h" />
+    <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Engine\MyQueryCallback.h" />
+    <ClInclude Include="Game\MenuScreenLevel.h" />
+    <ClInclude Include="Game\MediumRock.h" />
+    <ClInclude Include="Game\SmallRock.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\BG_Plain.png" />
+    <None Include="Assets\BG_Rocks.png" />
+    <None Include="Assets\BigRock1.png" />
+    <None Include="Assets\BigRock2.png" />
+    <None Include="Assets\BigRock3.png" />
+    <None Include="Assets\bullet.png" />
+    <None Include="Assets\bullet1.png" />
+    <None Include="Assets\EnterToStart.png" />
+    <None Include="Assets\gameOver.png" />
+    <None Include="Assets\MediumRock1_A.png" />
+    <None Include="Assets\MediumRock1_B.png" />
+    <None Include="Assets\MediumRock2_A.png" />
+    <None Include="Assets\MediumRock2_B.png" />
+    <None Include="Assets\MediumRock3_A.png" />
+    <None Include="Assets\MediumRock3_B.png" />
+    <None Include="Assets\nextLevel.png" />
+    <None Include="Assets\ScreenBackground.png" />
+    <None Include="Assets\SmallRock1_A1.png" />
+    <None Include="Assets\SmallRock1_A2.png" />
+    <None Include="Assets\SmallRock1_A3.png" />
+    <None Include="Assets\SmallRock1_B1.png" />
+    <None Include="Assets\SmallRock1_B2.png" />
+    <None Include="Assets\SmallRock1_B3.png" />
+    <None Include="Assets\SmallRock2_A1.png" />
+    <None Include="Assets\SmallRock2_A2.png" />
+    <None Include="Assets\SmallRock2_A3.png" />
+    <None Include="Assets\SmallRock2_B1.png" />
+    <None Include="Assets\SmallRock2_B2.png" />
+    <None Include="Assets\SmallRock2_B3.png" />
+    <None Include="Assets\SmallRock3_A1.png" />
+    <None Include="Assets\SmallRock3_A2.png" />
+    <None Include="Assets\SmallRock3_A3.png" />
+    <None Include="Assets\SmallRock3_B1.png" />
+    <None Include="Assets\SmallRock3_B2.png" />
+    <None Include="Assets\SmallRock3_B3.png" />
+    <None Include="Assets\spaceShip.png" />
+    <None Include="Assets\spaceShip_small.png" />
+    <None Include="frameworks\sfml\include\sfml\graphics\rect.inl" />
+    <None Include="frameworks\sfml\include\sfml\system\thread.inl" />
+    <None Include="frameworks\sfml\include\sfml\system\threadlocalptr.inl" />
+    <None Include="frameworks\sfml\include\sfml\system\utf.inl" />
+    <None Include="frameworks\sfml\include\sfml\system\vector2.inl" />
+    <None Include="frameworks\sfml\include\sfml\system\vector3.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
