@@ -64,6 +64,8 @@ private:
 	void OnDestroy();
 	string GetType();
 
+	void CheckCoordinates();
+
 	PlayerState currentState;
 	PlayerState previousState;
 

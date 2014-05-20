@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include "Engine/Engine.h"
 #include "Game/Game.h"
-//#include <thread>
+#include <thread>
+
+
+int threadCounter = 0;
 
 sf::RenderWindow* rWin;
 Game* gameEngine;
 
 bool leftKey, rightKey, upKey, downKey, spaceKey, returnKey;
 
-sf::Keyboard::Key* key = new sf::Keyboard::Key();
+sf::Keyboard::Key* key;
 
 void keyPressedThread(sf::Keyboard::Key* key)
 {
@@ -16,6 +19,7 @@ void keyPressedThread(sf::Keyboard::Key* key)
 	{
 		gameEngine->OnKeyPressed(*key);
 	}
+	threadCounter--;
 }
 
 void keyReleasedThread(sf::Keyboard::Key* key)
@@ -24,6 +28,7 @@ void keyReleasedThread(sf::Keyboard::Key* key)
 	{
 		gameEngine->OnKeyReleased(*key);
 	}
+	threadCounter--;
 }
 
 void keyPressed(sf::Keyboard::Key* key)
@@ -99,18 +104,17 @@ void keyRelease(sf::Keyboard::Key* key)
 
 int main(int argc, char** argv)
 {
-	sf::Keyboard::Key* key = new sf::Keyboard::Key;
-	sf::Keyboard::Key tempKey = sf::Keyboard::Unknown;
-	key = &tempKey;
+	//sf::Keyboard::Key key = sf::Keyboard::Unknown;
+	key = new sf::Keyboard::Key(sf::Keyboard::Unknown);
 
-	// Create Input Handler Threads
+	// Threads Declarations
 	/*
-	std::thread onKeyPressed(&keyPressed, key);
-	std::thread onKeyReleased(&keyReleased, key);
+	std::thread onKeyPressed(&keyPressedThread, key);
+	std::thread onKeyReleased(&keyReleasedThread, key);
 	*/
 	sf::Thread onKeyPressed(&keyPressedThread, key);
 	sf::Thread onKeyReleased(&keyReleasedThread, key);
-
+	
 	// Create Game Engine Instance
 	gameEngine = new Game();
 
@@ -141,6 +145,7 @@ int main(int argc, char** argv)
 				case sf::Event::KeyPressed:
 					//gameEngine->OnKeyPressed(event.key.code);
 					*key = event.key.code;
+					//gameEngine->OnKeyPressed(key);
 					//onKeyPressed.launch();
 					keyPress(key);
 					break;
@@ -148,6 +153,7 @@ int main(int argc, char** argv)
 				case sf::Event::KeyReleased:
 					//gameEngine->OnKeyReleased(event.key.code);
 					*key = event.key.code;
+					//gameEngine->OnKeyReleased(key);
 					//onKeyReleased.launch();
 					keyRelease(key);
 					break;
@@ -170,7 +176,7 @@ int main(int argc, char** argv)
 			}
 		}
 		
-
+		
 		if(returnKey)
 		{
 			*key = sf::Keyboard::Return;
@@ -186,29 +192,46 @@ int main(int argc, char** argv)
 			if(leftKey)
 			{
 				*key = sf::Keyboard::Left;
-				//onKeyPressed.join();
-				onKeyPressed.launch();
+				if(threadCounter <= 20)
+				{
+
+					//onKeyPressed.join();		// std::thread instance
+					onKeyPressed.launch();	// sf::Thread instance
+					threadCounter++;
+				} 
 			}
 			if(rightKey)
 			{
 				*key = sf::Keyboard::Right;
-				//onKeyPressed.join();
-				onKeyPressed.launch();
+				if(threadCounter <= 20)
+				{
+					//onKeyPressed.join();		// std::thread instance
+					onKeyPressed.launch();	// sf::Thread instance
+					threadCounter++;
+				}
 			}
 			if(upKey)
 			{
 				*key = sf::Keyboard::Up;
-				//onKeyPressed.join();
-				onKeyPressed.launch();
+				if(threadCounter <= 20)
+				{
+					//onKeyPressed.join();		// std::thread instance
+					onKeyPressed.launch();	// sf::Thread instance
+					threadCounter++;
+				}
 			}
 			if(downKey)
 			{
 				*key = sf::Keyboard::Down;
-				//onKeyPressed.join();
-				onKeyPressed.launch();
+				if(threadCounter <= 20)
+				{
+					//onKeyPressed.join();		// std::thread instance
+					onKeyPressed.launch();	// sf::Thread instance
+					threadCounter++;
+				}
 			}
 		}
-
+		
 
 		//Clear the window with black color
 		rWin->clear(sf::Color::Black);
@@ -229,9 +252,10 @@ int main(int argc, char** argv)
 		{
 			elapsed = clock.getElapsedTime();
 		}
-		*/
-        
+		*/   
 	}
 
 	return 0;
 }
+
+

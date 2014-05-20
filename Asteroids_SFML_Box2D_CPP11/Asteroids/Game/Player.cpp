@@ -23,6 +23,7 @@ void Player::Start()
 	SetDamping(1.0f);
 	SetAngularDamping(1.5f);
 	lives = 3;
+	SetState(NormalState);
 }
 
 void Player::Update(unsigned long frameNumber)
@@ -30,7 +31,7 @@ void Player::Update(unsigned long frameNumber)
 	switch(currentState)
 	{
 		case DyingState:
-     			lives--;
+			lives--;
 			if(lives <= 0)
 			{
 				Destroy();
@@ -39,9 +40,15 @@ void Player::Update(unsigned long frameNumber)
 			else
 			{
 				SetPosition(0,0);
+				SetState(NormalState);
 			}
 			SetState(NormalState);
 			break;
+		case NormalState:
+			CheckCoordinates();
+			break;
+			
+
 	}
 }
 
@@ -163,11 +170,13 @@ void Player::RotatePlayer(RotationAngle angle)
 	}
 	switch(angle)
 	{
-		case Right: collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.05f);
+		case Right: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()+0.075f);
+			Rotate(0.01f);
 			break;
-		case Left: collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.05f);
+		case Left: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()-0.075f);
+			Rotate(-0.01f);
 			break;
 	}
 }
@@ -194,4 +203,25 @@ void Player::SlowMove()
 void Player::SlowRotate()
 {
 	collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity());
+}
+
+void Player::CheckCoordinates()
+{
+	if(position.x < -10.0f)
+	{
+		SetPosition(9.5f, position.y);
+	}
+	else if(position.x > 10.0f)
+	{
+		SetPosition(-9.5f, position.y);
+	}
+
+	if(position.y < -8.0f)
+	{
+		SetPosition(position.x, 7.5f);
+	}
+	else if(position.y > 8.0f)
+	{
+		SetPosition(position.x, -7.5f);
+	}
 }

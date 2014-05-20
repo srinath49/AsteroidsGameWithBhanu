@@ -416,7 +416,7 @@ bool b2Body::ShouldCollide(const b2Body* other) const
 
 void b2Body::SetTransform(const b2Vec2& position, float32 angle)
 {
-	b2Assert(m_world->IsLocked() == false);
+	//b2Assert(m_world->IsLocked() == false);
 	if (m_world->IsLocked() == true)
 	{
 		return;
