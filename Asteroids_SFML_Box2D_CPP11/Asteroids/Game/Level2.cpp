@@ -10,7 +10,7 @@ void Level2::CreateLayers()
 
 void Level2::CreateGameObjects()
 {
-
+	this;
 	screenBackground = new Background("ScreenBackground" , gameEngine , false , false , Vector2(0.0f, 0.0f), "BG_Plain.png", false, 1, 1);
 
 	player = new Player("Character", gameEngine, true, true, Vector2(0.0f, 0.0f), "spaceShip.png", true, 2, 2);
@@ -18,6 +18,8 @@ void Level2::CreateGameObjects()
 	player->currentLevel = this;
 
 	bigRock1 = new BigRock("Character2", gameEngine, true, true, Vector2(4.0f , 1.0f), "BigRock1.png", false, 1, 1);
+	bigRock1->currentLevel = this;
+
 	bigRock1->medRockATexture = "MediumRock1_A.png";
 	bigRock1->medRockBTexture = "MediumRock1_B.png";
 
@@ -30,6 +32,8 @@ void Level2::CreateGameObjects()
 	bigRock1->smallRock3BTexture = "SmallRock1_B3.png";
 
 	bigRock2 = new BigRock("Character3", gameEngine, true, true, Vector2(8.0f , 1.0f), "BigRock2.png", false, 1, 1);
+	bigRock2->currentLevel = this;
+
 	bigRock2->medRockATexture = "MediumRock2_A.png";
 	bigRock2->medRockBTexture = "MediumRock2_B.png";
 
@@ -49,10 +53,9 @@ void Level2::AddObjectsToLayers()
 	gameEngine->GetLayer(backgroundLayer)->AddObjectToLayer(screenBackground);
 	gameEngine->GetLayer(playerLayer)->AddObjectToLayer(player);
 	gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock1);
-	//gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock2);
+	gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock2);
 	//gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock3);
 	levelDone = false;
-	
 }
 
 void Level2::LevelWon()
@@ -69,6 +72,8 @@ void Level2::LevelLost()
 
 void Level2::Update(unsigned long frameNumber)
 {	
+	LevelWon();
+	return;
 	if(enemiesCount == 0 && rocksCount == 0)
 	{
 		LevelWon();
@@ -91,10 +96,9 @@ void Level2::OnPointerPressed(Vector2 point)
 
 void Level2::OnPointerMoved(Vector2 point)
 {
-	GameObject* obj = gameEngine->GetDynamicObjectAtPoint(point);
-	if(obj != nullptr)
+	if(player != nullptr)
 	{
-		obj->OnPointerMoved(point);
+		player->OnPointerMoved(point);
 	}
 }
 

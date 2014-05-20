@@ -11,7 +11,7 @@ LevelManager::LevelManager(Game* _Main, int _TotalLevels)
 	{
 		LevelsCreated[i] = false;
 	}
-	CurrentLevel = -1;
+	CurrentLevel = 0;
 	PreviousLevel = -1;
 }
 

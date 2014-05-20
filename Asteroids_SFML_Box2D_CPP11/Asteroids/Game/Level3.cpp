@@ -1,4 +1,3 @@
-
 #include "Level3.h"
 
 void Level3::CreateLayers()
@@ -18,6 +17,8 @@ void Level3::CreateGameObjects()
 	player->currentLevel = this;
 
 	bigRock1 = new BigRock("Character2", gameEngine, true, true, Vector2(4.0f , 1.0f), "BigRock1.png", false, 1, 1);
+	bigRock1->currentLevel = this;
+
 	bigRock1->medRockATexture = "MediumRock1_A.png";
 	bigRock1->medRockBTexture = "MediumRock1_B.png";
 
@@ -30,6 +31,8 @@ void Level3::CreateGameObjects()
 	bigRock1->smallRock3BTexture = "SmallRock1_B3.png";
 
 	bigRock2 = new BigRock("Character3", gameEngine, true, true, Vector2(8.0f , 1.0f), "BigRock2.png", false, 1, 1);
+	bigRock2->currentLevel = this;
+
 	bigRock2->medRockATexture = "MediumRock2_A.png";
 	bigRock2->medRockBTexture = "MediumRock2_B.png";
 
@@ -42,8 +45,10 @@ void Level3::CreateGameObjects()
 	bigRock2->smallRock3BTexture = "SmallRock2_B3.png";
 
 	bigRock3 = new BigRock("Character4", gameEngine, true, true, Vector2(12.0f , 1.0f), "BigRock3.png", false, 1, 1);
-	bigRock3->medRockATexture = "MediumRock2_A.png";
-	bigRock3->medRockBTexture = "MediumRock2_B.png";
+	bigRock3->currentLevel = this;
+
+	bigRock3->medRockATexture = "MediumRock3_A.png";
+	bigRock3->medRockBTexture = "MediumRock3_B.png";
 
 	bigRock3->smallRock1ATexture = "SmallRock3_A1.png";
 	bigRock3->smallRock2ATexture = "SmallRock3_A2.png";
@@ -61,8 +66,8 @@ void Level3::AddObjectsToLayers()
 	gameEngine->GetLayer(backgroundLayer)->AddObjectToLayer(screenBackground);
 	gameEngine->GetLayer(playerLayer)->AddObjectToLayer(player);
 	gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock1);
-	//gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock2);
-	//gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock3);
+	gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock2);
+	gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock3);
 	levelDone = false;
 	
 }
@@ -91,7 +96,6 @@ void Level3::Update(unsigned long frameNumber)
 	}
 }
 
-
 void Level3::OnPointerPressed(Vector2 point)
 {
 	GameObject* obj = gameEngine->GetDynamicObjectAtPoint(point);
@@ -103,10 +107,9 @@ void Level3::OnPointerPressed(Vector2 point)
 
 void Level3::OnPointerMoved(Vector2 point)
 {
-	GameObject* obj = gameEngine->GetDynamicObjectAtPoint(point);
-	if(obj != nullptr)
+	if(player != nullptr)
 	{
-		obj->OnPointerMoved(point);
+		player->OnPointerMoved(point);
 	}
 }
 

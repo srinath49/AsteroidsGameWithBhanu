@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Game/GameLevel.h"
+#include "GameLevel.h"
 #include "Engine/GameObject.h"
-#include "Game/Player.h"
-#include "Game/BigRock.h"
-#include "Game/Background.h"
+#include "Player.h"
+#include "BigRock.h"
+#include "Background.h"
 
 class Level3 : public GameLevel
 {

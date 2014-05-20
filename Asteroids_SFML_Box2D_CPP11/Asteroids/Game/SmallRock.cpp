@@ -54,5 +54,7 @@ string SmallRock::GetType()
 
 void SmallRock::BlastRock()
 {
+	currentLevel->rocksCount--;
 	Destroy();
+	SetState(DeadState);
 }

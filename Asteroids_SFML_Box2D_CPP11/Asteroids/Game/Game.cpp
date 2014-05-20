@@ -2,6 +2,7 @@
 #include "Engine\Layer.h"
 #include "Game\Level1.h"
 #include "Game\Level2.h"
+#include "Game\Level3.h"
 #include "MenuScreenLevel.h"
 
 
@@ -9,12 +10,13 @@ void Game::Start()
 {
 	previousLevel = 0;
 	currentLevel = 0;
-	levelToLoad = 0;
+	levelToLoad = 1;
 
-	levelManager = new LevelManager(this, 3);
-	levelManager->CreateLevel(new MenuScreenLevel(this, 0));
-	levelManager->CreateLevel(new Level1(this, 1));
+	levelManager = new LevelManager(this, 4);
+	levelManager->CreateLevel(new MenuScreenLevel(this, 1));
+	levelManager->CreateLevel(new Level1(this, 4));
 	levelManager->CreateLevel(new Level2(this, 2));
+	levelManager->CreateLevel(new Level3(this, 3));
 	LoadLevel(levelToLoad);
 	SetGameState(GameState::LoadingLevel);
 	//currentLevel = levelManager->GetCurrentLevel()->levelNumber;
@@ -34,6 +36,7 @@ void Game::Update(unsigned long frameNumber)
 			{
 				LoadLevel(levelToLoad);
 				SetGameState(GameState::LoadingLevel);
+				currentLevel = levelManager->GetCurrentLevel()->levelNumber;
 			}
 			break;
 		case GameState::ReloadTheLevel: 

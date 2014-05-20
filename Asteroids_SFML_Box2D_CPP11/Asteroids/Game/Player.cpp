@@ -201,13 +201,13 @@ void Player::RotatePlayer(RotationAngle angle)
 	*/
 	switch(angle)
 	{
-		case Clock: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.05f);
+		case Clock: collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()+0.075f);
-			Rotate(0.04f);
+			//Rotate(0.04f);
 			break;
-		case Anti: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.05f);
+		case Anti: collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()-0.075f);
-			Rotate(-0.04f);
+			//Rotate(-0.04f);
 			break;
 	}
 }
@@ -247,7 +247,7 @@ void Player::SlowMove()
 
 void Player::SlowRotate()
 {
-	//collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity());
+	collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity());
 }
 
 void Player::CheckCoordinates()

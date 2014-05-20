@@ -84,7 +84,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Srinath%27s Test\AsteroidsGameWithBhanuGit\Asteroids_SFML_Box2D_CPP11\Asteroids\Level3.cpp" />
     <ClCompile Include="Frameworks\Box2D\Collision\b2BroadPhase.cpp" />
     <ClCompile Include="Frameworks\Box2D\Collision\b2CollideCircle.cpp" />
     <ClCompile Include="Frameworks\Box2D\Collision\b2CollideEdge.cpp" />
@@ -147,6 +146,7 @@
     <ClCompile Include="Engine\TextureManager.cpp" />
     <ClCompile Include="Game\Background.cpp" />
     <ClCompile Include="Game\Level1.cpp" />
+    <ClCompile Include="Game\Level3.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="EngineStart.cpp" />
@@ -157,7 +157,6 @@
     <ClCompile Include="Game\Level2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Srinath%27s Test\AsteroidsGameWithBhanuGit\Asteroids_SFML_Box2D_CPP11\Asteroids\Level3.h" />
     <ClInclude Include="frameworks\box2d\box2d.h" />
     <ClInclude Include="frameworks\box2d\collision\b2broadphase.h" />
     <ClInclude Include="frameworks\box2d\collision\b2collision.h" />
@@ -303,6 +302,7 @@
     <ClInclude Include="Engine\TextureManager.h" />
     <ClInclude Include="Game\Background.h" />
     <ClInclude Include="Game\Level1.h" />
+    <ClInclude Include="Game\Level3.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Engine\MyQueryCallback.h" />

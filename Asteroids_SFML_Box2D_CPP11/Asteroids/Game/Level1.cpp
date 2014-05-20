@@ -6,6 +6,8 @@ BigRock* bigRock3;
 
 void Level1::CreateLayers()
 {
+	enemiesCount = 0;
+	rocksCount = 0;
 	backgroundLayer = gameEngine->AddLayer();
 	rocksLayer = gameEngine->AddLayer();
 	playerLayer = gameEngine->AddLayer();
@@ -21,6 +23,8 @@ void Level1::CreateGameObjects()
 	player->currentLevel = this;
 
 	bigRock1 = new BigRock("Character2", gameEngine, true, true, Vector2(4.0f , 1.0f), "BigRock1.png", false, 1, 1);
+	bigRock1->currentLevel = this;
+
 	bigRock1->medRockATexture = "MediumRock1_A.png";
 	bigRock1->medRockBTexture = "MediumRock1_B.png";
 
@@ -40,6 +44,7 @@ void Level1::AddObjectsToLayers()
 	gameEngine->GetLayer(backgroundLayer)->AddObjectToLayer(screenBackground);
 	gameEngine->GetLayer(playerLayer)->AddObjectToLayer(player);
 	gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock1);
+	rocksCount++;
 	//gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock2);
 	//gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock3);
 	levelDone = false;

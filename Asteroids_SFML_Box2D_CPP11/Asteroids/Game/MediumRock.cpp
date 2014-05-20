@@ -58,6 +58,14 @@ void MediumRock::BlastRock()
 	SmallRock* rock2 = new SmallRock("SmallRockB", gameEngine, true, true, Vector2(position.x-1.5f, position.y-1.5f), smallRock2Texture, false, 1, 1);
 	SmallRock* rock3 = new SmallRock("SmallRockC", gameEngine, true, true, Vector2(position.x-1.5f, position.y-1.5f), smallRock3Texture, false, 1, 1);
 
+	rock1->currentLevel = currentLevel;
+	rock2->currentLevel = currentLevel;
+	rock3->currentLevel = currentLevel;
+
+	currentLevel->rocksCount++;
+	currentLevel->rocksCount++;
+	currentLevel->rocksCount++;
+
 	Vector2 vel1;
 	Vector2 vel2;
 	Vector2 vel3;
@@ -128,5 +136,7 @@ void MediumRock::BlastRock()
 	gameEngine->GetLayer(2)->AddObjectToLayer(rock2);
 	gameEngine->GetLayer(2)->AddObjectToLayer(rock3);
 
+	currentLevel->rocksCount--;
 	Destroy();
+	SetState(DeadState);
 }

@@ -32,12 +32,12 @@ public:
 	void OnKeyReleased(sf::Keyboard::Key key);
 
 	bool levelDone;
+	int rocksLayer;
+	int enemyLayer;
 
 private:
 	// Layer numbers
 	int backgroundLayer;
-	int rocksLayer;
-	int enemyLayer;
 	int playerLayer;
 
 	Player* player;

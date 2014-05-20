@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine\gameobject.h"
+#include "GameLevel.h"
 
 
 class AsteroidRock :
@@ -10,7 +11,8 @@ public:
 	enum AsteroidState
 	{
 		NormalState,
-		BlastState
+		BlastState,
+		DeadState
 	};
 
 	AsteroidRock() : GameObject(){}
@@ -27,6 +29,7 @@ public:
 	float RandFloatInRange(float a, float b){return ((b-a)*((float)rand()/RAND_MAX))+a;}
 
 	void CheckCoordinates();
+	GameLevel* currentLevel;
 
 private:
 	int scoreValue;
@@ -41,5 +44,6 @@ protected:
 
 	AsteroidState currentState;
 	AsteroidState previousState;
+
 };
 
