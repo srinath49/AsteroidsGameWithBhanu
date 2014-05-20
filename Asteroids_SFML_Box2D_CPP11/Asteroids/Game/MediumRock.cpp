@@ -122,7 +122,7 @@ void MediumRock::BlastRock()
 
 	rock1->SetVelocity(vel1.x, vel1.y);
 	rock2->SetVelocity(-vel2.x, -vel2.y);
-	rock2->SetVelocity(-vel3.x, vel3.y);
+	rock3->SetVelocity(-vel3.x, vel3.y);
 
 	gameEngine->GetLayer(2)->AddObjectToLayer(rock1);
 	gameEngine->GetLayer(2)->AddObjectToLayer(rock2);
