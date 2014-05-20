@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "Engine/Engine.h"
 #include "Game/Game.h"
-#include <thread>
+//#include <thread>
 
 sf::RenderWindow* rWin;
 Game* gameEngine;

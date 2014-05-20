@@ -49,6 +49,10 @@ public:
 
 	void Fire();
 
+	void SlowMove();
+
+	void SlowRotate();
+
 	//string IntString(int intToConvert);
 
 private:

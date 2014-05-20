@@ -20,8 +20,8 @@ void Player::Start()
 	SetGravity(0.0f);
 	SetVelocity(0.0f,0.0f);
 	SetFriction(0.1f);
-	SetDamping(0.4f);
-	SetAngularDamping(1.0f);
+	SetDamping(1.0f);
+	SetAngularDamping(1.5f);
 	lives = 3;
 }
 
@@ -116,12 +116,16 @@ void Player::OnKeyReleased(sf::Keyboard::Key releasedKey)
 	switch(releasedKey)
 	{
 		case sf::Keyboard::Right:
+			SlowRotate();
 			break;
 		case sf::Keyboard::Left:
+			SlowRotate();
 			break;
 		case sf::Keyboard::Up:
+			SlowMove();
 			break;
 		case sf::Keyboard::Down:
+			SlowMove();
 			break;
 	}
 }
@@ -153,16 +157,16 @@ void Player::RotatePlayer(RotationAngle angle)
 		return;
 	}
 
-	if(collisionBox->GetAngularVelocity() >= 5.0)
+	if(collisionBox->GetAngularVelocity() >= 3.0)
 	{
 		return;
 	}
 	switch(angle)
 	{
-		case Right: collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.675f);
+		case Right: collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()+0.075f);
 			break;
-		case Left: collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.675f);
+		case Left: collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()-0.075f);
 			break;
 	}
@@ -179,4 +183,15 @@ void Player::Fire()
 	Bullet* newBullet = new Bullet("Bullet", gameEngine, true, true, position, "bullet.png", false, 1, 1);
  	newBullet->SetRotation(this->GetRotationAngle());
 	gameEngine->GetLayer(2)->AddObjectToLayer(newBullet);
+}
+
+
+void Player::SlowMove()
+{
+	SetVelocity(GetVelocity().x*0.5f, GetVelocity().y*0.5f);
+}
+
+void Player::SlowRotate()
+{
+	collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity());
 }
