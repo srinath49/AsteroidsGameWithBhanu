@@ -57,7 +57,7 @@ void LevelManager::CreateLevel(Level* newLevel)
 
 void LevelManager::UnloadCurrentLevel()
 {
-	if(CurrentLevel == -1)
+	if(CurrentLevel == 0)
 	{
 		return;
 	}

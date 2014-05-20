@@ -37,6 +37,7 @@ void Bullet::Update(unsigned long frameNumber)
 	if(destroy)
 	{
 		Destroy();
+		destroy = false;
 		return;
 	}
 	if(GetVelocitySize() < 80.0f)

@@ -97,6 +97,13 @@ public:
 	Layer * GetLayer(int layerId);
 
 	/**
+	 * Gets the total layers in the game
+	 *
+	 * @return		The Layers Count 
+	 */
+	int GetLayersCount();
+
+	/**
 	 * Gets the dynamic gameobject at the specified point
 	 *
 	 * @param		_Point		The point to check for dynamic body

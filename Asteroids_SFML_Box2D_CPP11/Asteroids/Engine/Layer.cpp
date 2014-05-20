@@ -28,9 +28,15 @@ GameObject * Layer::GetObjectByName(string name)
 void Layer::RemoveObject(string objectName)
 {
 	GameObject * n = GetObjectByName(objectName);
-	if (n!=NULL)
+	if (n!=NULL && !n->isDestroyed)
 	{
-		m_deleteQueue.push_back(objectName);
+  		m_deleteQueue.push_back(objectName);
+		n->isDestroyed = true;
+		n->pointerPressed = false;
+		n->OnDestroy();
+		//n->textureHolder.remove_if(true);
+		//n->collisionBox->GetWorld()->DestroyBody(n->collisionBox);
+		//delete(n);
 	}
 }
 
@@ -48,8 +54,14 @@ void Layer::Update(unsigned long frameNumber)
 	typedef std::map<string, GameObject *>::iterator it_type;
 	for(it_type iterator = m_objectByRef.begin(); iterator != m_objectByRef.end(); iterator++) 
 	{
-		iterator->second->Update(frameNumber);
-		//iterator->second->SetTextureFrame(frameNumber);
+		if(!iterator->second->isDestroyed)
+		{
+			if(!iterator->second->isDestroyed)
+			{
+				iterator->second->Update(frameNumber);
+				//iterator->second->SetTextureFrame(frameNumber);
+			}
+		}
 	}
 }
 
@@ -58,6 +70,10 @@ void Layer::Render(sf::RenderWindow* renderer/*, sf::Time globalTime*/)
 	typedef std::map<string, GameObject *>::iterator it_type;
 	for(it_type iterator = m_objectByRef.begin(); iterator != m_objectByRef.end(); iterator++) 
 	{
+		if(!iterator->second->isDestroyed)
+		{
+			iterator->second->Render(renderer/*, globalTime*/);
+		}
 		iterator->second->Render(renderer/*, globalTime*/);
 	}
 }
@@ -68,11 +84,12 @@ void Layer::AddRemoveObjects()
 	for(std::list<string>::iterator iterator = m_deleteQueue.begin(); iterator != m_deleteQueue.end(); iterator++) 
 	{
 		GameObject * n = GetObjectByName(*iterator);
-		if (n!=NULL)
+		if (n!=NULL && n->isDestroyed == false)
 		{
-			m_objectByRef.erase(*iterator);
+			n->isDestroyed = true;
 			n->OnDestroy();
-			delete(n);
+			m_objectByRef.erase(*iterator);
+			//delete(n);
 		}
 	}
 	m_deleteQueue.clear();

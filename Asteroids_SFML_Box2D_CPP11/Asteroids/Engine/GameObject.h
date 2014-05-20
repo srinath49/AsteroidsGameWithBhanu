@@ -146,10 +146,6 @@ protected:
 	 */
 	Vector2 touchPoint;
 
-	/**
-	 * A list that stores all the textures/spritesheets of this object
-	 */
-	list<TextureEntry *> textureHolder;
 
 	/**
 	 * An iterator for traversing the TextureHolder list
@@ -182,6 +178,11 @@ protected:
 	ColliderType colliderType;
 
 public:
+
+	/**
+	 * A list that stores all the textures/spritesheets of this object
+	 */
+	list<TextureEntry *> textureHolder;
 
 	float meterToPixel; //50 pixels to a meter
 

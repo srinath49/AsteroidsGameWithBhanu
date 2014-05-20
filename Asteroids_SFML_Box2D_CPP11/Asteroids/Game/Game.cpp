@@ -14,9 +14,9 @@ void Game::Start()
 
 	levelManager = new LevelManager(this, 4);
 	levelManager->CreateLevel(new MenuScreenLevel(this, 1));
-	levelManager->CreateLevel(new Level1(this, 4));
-	levelManager->CreateLevel(new Level2(this, 2));
-	levelManager->CreateLevel(new Level3(this, 3));
+	levelManager->CreateLevel(new Level1(this, 2));
+	levelManager->CreateLevel(new Level2(this, 3));
+	levelManager->CreateLevel(new Level3(this, 4));
 	LoadLevel(levelToLoad);
 	SetGameState(GameState::LoadingLevel);
 	//currentLevel = levelManager->GetCurrentLevel()->levelNumber;

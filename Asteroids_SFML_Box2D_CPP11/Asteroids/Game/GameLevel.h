@@ -1,6 +1,7 @@
 #pragma once
-#include "Engine\level.h"
 
+#include "Engine\level.h"
+#include <SFML/Audio.hpp>
 
 class GameLevel :
 	public Level
@@ -30,5 +31,7 @@ public:
 
 	int enemiesCount;
 	int rocksCount;
+
+	sf::Music music;
 };
 

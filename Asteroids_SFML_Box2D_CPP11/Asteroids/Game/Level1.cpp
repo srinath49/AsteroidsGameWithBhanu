@@ -15,7 +15,6 @@ void Level1::CreateLayers()
 
 void Level1::CreateGameObjects()
 {
-
 	screenBackground = new Background("ScreenBackground" , gameEngine , false , false , Vector2(0.0f, 0.0f), "BG_Plain.png", false, 1, 1);
 
 	player = new Player("Character", gameEngine, true, true, Vector2(0.0f, 0.0f), "spaceShip.png", true, 2, 2);
@@ -49,6 +48,10 @@ void Level1::AddObjectsToLayers()
 	//gameEngine->GetLayer(rocksLayer)->AddObjectToLayer(bigRock3);
 	levelDone = false;
 	
+	if(music.openFromFile("Assets/Laser.aif"))
+	{
+		music.play();
+	}
 }
 
 void Level1::LevelWon()

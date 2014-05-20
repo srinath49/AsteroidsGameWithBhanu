@@ -26,7 +26,7 @@ TextureEntry * TextureManager::AddTexture(Engine * engineRef, string textureName
 		Texture* tempTexture2 = new Texture();
 		tempTexture2->image->loadFromFile(fileName);
 		tempTexture->image = tempTexture2->image;
-		texEnt2->refCount=1;
+		texEnt2->textureID=++textureID;
 		// Set width and of the texture
 		tempTexture->SetSize();
 		// Set the time animation play time
@@ -52,19 +52,20 @@ TextureEntry * TextureManager::AddTexture(Engine * engineRef, string textureName
 	return texEnt;
 
 }
-void TextureManager::DeleteTexture(string texName)
+void TextureManager::DeleteTexture(string texName, int textureID)
 {
 	//TODO Tom have a look at this, ive moved te out of the if(te->refCount==0) as its not all a referance now, but deleting that deletes te->texture that is one
 	//I cant think of a way round this atm
+	
 	TextureEntry * texEnt = TextureManager::textureStore[texName];
 
 	
 	if (texEnt != NULL)
 	{
-		texEnt->refCount--;
-		if (texEnt->refCount==0)
+		//texEnt->refCount--;
+		if (texEnt->textureID==textureID)
 		{
-			textureStore.erase(texName);
+			//textureStore.erase(texName);
 			texEnt->texture->~Texture();
 			delete texEnt->texture;
 			delete texEnt;

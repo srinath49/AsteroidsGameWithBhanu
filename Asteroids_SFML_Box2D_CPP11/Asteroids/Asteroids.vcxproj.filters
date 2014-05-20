@@ -820,5 +820,13 @@
     <None Include="frameworks\sfml\include\sfml\system\vector3.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="Assets\Die 2.aif" />
+    <None Include="Assets\Die.aif" />
+    <None Include="Assets\Engines.aif" />
+    <None Include="Assets\Lazer.aif" />
+    <None Include="Assets\Saucer.aif" />
+    <None Include="Assets\Saucer Lazer.aif" />
+    <None Include="Assets\Note Low.aif" />
+    <None Include="Assets\Note High.aif" />
   </ItemGroup>
 </Project>

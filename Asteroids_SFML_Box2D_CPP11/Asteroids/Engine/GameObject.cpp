@@ -141,10 +141,11 @@ GameObject::GameObject(string objectName, Engine* engineRef, bool isDynamic, boo
 	//Box.SetAsBox(((currentTexture->image->getSize().x*0.5f)/meterToPixel),((currentTexture->image->getSize().y*0.5f)/meterToPixel), b2Vec2((currentTexture->image->getSize().x*0.5f)/meterToPixel,(currentTexture->image->getSize().y*0.5f)/meterToPixel),  body->GetAngle());
 	//Box.SetAsBox((currentTexture->image->getSize().x/100.0f),(currentTexture->image->getSize().y/100.0f)/*, b2Vec2((currentTexture->image->getSize().x*0.5f),(currentTexture->image->getSize().y*0.5f)),  body->GetAngle()*/);
 	//Box.SetAsBox(((currentTexture->image->getSize().x*0.5f)),((currentTexture->image->getSize().y*0.5f)), b2Vec2((currentTexture->image->getSize().x*0.5f),(currentTexture->image->getSize().y*0.5f)),  body->GetAngle());
-	//Box.SetAsBox((position.x/meterToPixel),(position.x/meterToPixel), b2Vec2((currentTexture->image->getSize().x*0.5f)/meterToPixel,(currentTexture->image->getSize().y*0.5f)/meterToPixel), body->GetAngle());
+	//Box.SetAsBox(((position.x/meterToPixel)-(currentTexture->image->getSize().x*0.5f)), ((position.y/meterToPixel)-(currentTexture->image->getSize().y*0.5f)), b2Vec2(((position.x/meterToPixel)-(currentTexture->image->getSize().x*0.5f)), ((position.y/meterToPixel)-(currentTexture->image->getSize().y*0.5f))), body->GetAngle());
 	//Box.SetAsBox(((currentTexture->image->getSize().x*0.02f)),((currentTexture->image->getSize().y*0.02f)), b2Vec2((currentTexture->image->getSize().x*0.02f),(currentTexture->image->getSize().y*0.02f)),  body->GetAngle());
 	//Box.SetAsBox((5.0f)/50,(5.0f)/50);
-	Box.SetAsBox((position.x/meterToPixel),(position.x/meterToPixel));
+	Box.SetAsBox((position.x/meterToPixel),(position.y/meterToPixel));
+	//Box.SetAsBox(position.x,position.y);
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &Box;
@@ -297,7 +298,7 @@ void GameObject::OnDestroy()
 {
 	 textureHolder.remove_if(deleteAll);
 	 collisionBox->GetWorld()->DestroyBody(collisionBox);
-	 //delete(this);
+	 delete(this);
 }
 
 void GameObject::Destroy()
@@ -305,10 +306,15 @@ void GameObject::Destroy()
 	isDestroyed = true;
 	pointerPressed = false;
 	GetMyLayer()->RemoveObject(name);
+	//delete(this);
 }
 
 void GameObject::Render(sf::RenderWindow* renderer/*, sf::Time globalTime*/)
 {  
+	if(isDestroyed)
+	{
+		return;
+	}
 	if (!isActive) return; //Easy way to prevent this gameobject from being rendered
 
 	widthScreen = renderer->getSize().x;
@@ -322,8 +328,10 @@ void GameObject::Render(sf::RenderWindow* renderer/*, sf::Time globalTime*/)
 	drawPositionX = (position.x + offsetX) * meterToPixel; //( (0m) +  8.0m )* 50 = 400 pixels
 	drawPositionY = (-position.y + offsetY) * meterToPixel; //( -(4m) + 6.0m ) * 50 = 100 pixels
 
-	drawPositionX -= currentTexture->image->getSize().x/2;
-	drawPositionY -= currentTexture->image->getSize().y/2;
+	drawPositionX -= currentTexture->image->getSize().x*0.5f;
+	drawPositionY -= currentTexture->image->getSize().y*0.5f;
+
+	this;
 
 	currentTexture->sprite->setRotation(GetRotationAngle());
 	currentTexture->sprite->setPosition(drawPositionX, drawPositionY);

@@ -24,8 +24,8 @@ void MenuScreenLevel::AddObjectsToLayers()
 void MenuScreenLevel::LevelWon()
 {
 	gameEngine->RequestNextLevelLoad();
-	screenBackground->Destroy();
-	screenMessage->Destroy();
+	//screenBackground->Destroy();
+	//screenMessage->Destroy();
 }
 
 void MenuScreenLevel::LevelLost()

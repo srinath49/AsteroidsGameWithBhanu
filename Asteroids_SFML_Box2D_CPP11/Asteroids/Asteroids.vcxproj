@@ -319,8 +319,12 @@
     <None Include="Assets\BigRock3.png" />
     <None Include="Assets\bullet.png" />
     <None Include="Assets\bullet1.png" />
+    <None Include="Assets\Die 2.aif" />
+    <None Include="Assets\Die.aif" />
+    <None Include="Assets\Engines.aif" />
     <None Include="Assets\EnterToStart.png" />
     <None Include="Assets\gameOver.png" />
+    <None Include="Assets\Lazer.aif" />
     <None Include="Assets\MediumRock1_A.png" />
     <None Include="Assets\MediumRock1_B.png" />
     <None Include="Assets\MediumRock2_A.png" />
@@ -328,6 +332,10 @@
     <None Include="Assets\MediumRock3_A.png" />
     <None Include="Assets\MediumRock3_B.png" />
     <None Include="Assets\nextLevel.png" />
+    <None Include="Assets\Note High.aif" />
+    <None Include="Assets\Note Low.aif" />
+    <None Include="Assets\Saucer Lazer.aif" />
+    <None Include="Assets\Saucer.aif" />
     <None Include="Assets\ScreenBackground.png" />
     <None Include="Assets\SmallRock1_A1.png" />
     <None Include="Assets\SmallRock1_A2.png" />

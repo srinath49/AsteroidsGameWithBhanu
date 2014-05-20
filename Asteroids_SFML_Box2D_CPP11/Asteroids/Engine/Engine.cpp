@@ -52,12 +52,18 @@ Layer * Engine::GetLayer(int layerId)
 	}
 }
 
+int Engine::GetLayersCount()
+{
+	return layerCount;
+}
+
 void Engine::DeleteLayer(int layerId)
 {
 	if (layerId<layerCount)
 	{
 		layers[layerId]->Destroy();
 		layers[layerId]->layerDeleted = true;
+		layerCount--;
 	}
 }
 
