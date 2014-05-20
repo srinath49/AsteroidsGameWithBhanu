@@ -3,8 +3,6 @@
 
 
 extern b2World* phyxWorld; 
-float meterToPixel = 50.0; //50 pixels to a meter
-
 
 GameObject::GameObject() : 
 	isActive(true),
@@ -14,6 +12,7 @@ GameObject::GameObject() :
 	pointerPressed(false)
 {
 	name = "Object";
+	meterToPixel = 50.0f;
 }
 
 
@@ -25,6 +24,7 @@ GameObject::GameObject(string objectName, Engine* engineRef, bool isDynamic, boo
 	isDestroyed(false),
 	pointerPressed(false)
 {
+	meterToPixel = 50.0f;
 	// setting the gameobject name 
 	name = objectName;
 
@@ -96,6 +96,8 @@ GameObject::GameObject(string objectName, Engine* engineRef, bool isDynamic, boo
 	isDestroyed(false),
 	pointerPressed(false)
 {	
+	meterToPixel = 50.0f;
+
 	objectId = 0;
 	xDrawScale=1;
 	yDrawScale=1;

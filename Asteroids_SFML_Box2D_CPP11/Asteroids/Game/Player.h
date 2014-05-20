@@ -11,13 +11,17 @@ public:
 	{
 		Up,
 		Down,
+		Right,
+		Left
 	};
 
+	/*
 	enum RotationAngle
 	{
 		Right,
 		Left
 	};
+	*/
 
 	enum  PlayerState
 	{
@@ -29,6 +33,7 @@ public:
 	int Score;
 	GameLevel* currentLevel;
 	int lives;
+	float speed;
 
 	Player() : GameObject(){}
 	Player(string objectName, Engine* gameEngine, bool dynamic, bool physicsBody, Vector2 &_Position, string _TextureName, bool _IsSprite, int _Rows, int _Columns) : GameObject(objectName, gameEngine, dynamic, physicsBody, _Position, _TextureName, _IsSprite, _Rows, _Columns) {this->gameEngine = gameEngine;}
@@ -43,7 +48,7 @@ public:
 	PlayerState GetState(){return currentState;}
 	
 	void MovePlayer(MoveDirection direction);
-	void RotatePlayer(RotationAngle angle);
+	//void RotatePlayer(RotationAngle angle);
 	
 	void AddScore(int _ScoreToAdd){Score+=_ScoreToAdd;}
 
@@ -81,5 +86,7 @@ private:
 	int clickcount;
 
 	Engine* gameEngine;
+
+	Vector2 lookAtPoint;
 };
 

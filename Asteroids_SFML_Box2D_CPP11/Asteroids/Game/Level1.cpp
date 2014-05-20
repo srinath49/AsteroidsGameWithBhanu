@@ -82,10 +82,9 @@ void Level1::OnPointerPressed(Vector2 point)
 
 void Level1::OnPointerMoved(Vector2 point)
 {
-	GameObject* obj = gameEngine->GetDynamicObjectAtPoint(point);
-	if(obj != nullptr)
+	if(player != nullptr)
 	{
-		obj->OnPointerMoved(point);
+		player->OnPointerMoved(point);
 	}
 }
 

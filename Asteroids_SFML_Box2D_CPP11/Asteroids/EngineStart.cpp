@@ -157,9 +157,9 @@ int main(int argc, char** argv)
 					//onKeyReleased.launch();
 					keyRelease(key);
 					break;
-				/*	
+				
 				case sf::Event::MouseMoved:
-					gameEngine->OnPointerReleased(Vector2(sf::Mouse::getPosition().x*1.0f, sf::Mouse::getPosition().y*1.0f));
+					gameEngine->OnPointerMoved(Vector2(sf::Mouse::getPosition().x*1.0f, sf::Mouse::getPosition().y*1.0f));
 					break;
 
 				case sf::Event::MouseButtonPressed:
@@ -169,7 +169,7 @@ int main(int argc, char** argv)
 				case sf::Event::MouseButtonReleased:
 					gameEngine->OnPointerReleased(Vector2(sf::Mouse::getPosition().x*1.0f, sf::Mouse::getPosition().y*1.0f));
 					break;
-				*/
+				
 				case sf::Event::Closed:
 					rWin->close();
 					return 0;

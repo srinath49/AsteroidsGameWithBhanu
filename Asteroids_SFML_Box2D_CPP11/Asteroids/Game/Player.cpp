@@ -1,6 +1,8 @@
 #include "Player.h"
 #include "Bullet.h"
 
+//float meterToPixel = 50.0;
+
 void Player::BeginContact(GameObject* object)
 {
 	if(object->CompareTag("Rock"))
@@ -24,6 +26,8 @@ void Player::Start()
 	SetAngularDamping(1.5f);
 	lives = 3;
 	SetState(NormalState);
+	lookAtPoint = Vector2(2.0f, 2.0f);
+	speed = 7.0f;
 }
 
 void Player::Update(unsigned long frameNumber)
@@ -45,6 +49,7 @@ void Player::Update(unsigned long frameNumber)
 			SetState(NormalState);
 			break;
 		case NormalState:
+			RotateToLookAt(lookAtPoint);
 			CheckCoordinates();
 			break;
 			
@@ -64,6 +69,17 @@ void Player::OnPointerPressed(Vector2 _Point)
 
 void Player::OnPointerMoved(Vector2 _Point)
 {
+	//float widthScreen = gameEngine->GetRenderer()->getSize().x;
+	//float heightScreen = gameEngine->GetRenderer()->getSize().y;
+	//float offsetX = (widthScreen*0.5f)/meterToPixel; 
+	//float offsetY = (heightScreen*0.5f)/meterToPixel;
+	
+	//float lookAtPositionX = _Point.x/meterToPixel; 
+	//float lookAtPositionY = _Point.x/meterToPixel;
+
+	//lookAtPoint = Vector2(lookAtPositionX, lookAtPositionY);
+	//printf("%f ,  %f : \n", &lookAtPositionX, &lookAtPositionY);
+	//lookAtPoint = Vector2(offsetX, offsetY);
 }
 
 void Player::OnPointerReleased(Vector2 _Point)
@@ -102,10 +118,10 @@ void Player::OnKeyPressed(sf::Keyboard::Key pressedKey)
 			MovePlayer(MoveDirection::Down);
 			break;
 		case sf::Keyboard::Right:
-			RotatePlayer(RotationAngle::Right);
+			MovePlayer(MoveDirection::Right);
 			break;
 		case sf::Keyboard::Left:
-			RotatePlayer(RotationAngle::Left);
+			MovePlayer(MoveDirection::Left);
 			break;
 		case sf::Keyboard::Space:
 			Fire();
@@ -150,13 +166,18 @@ void Player::MovePlayer(MoveDirection direction)
 	}
 	switch(direction)
 	{
-		case Up: AddForce(0.0f, 7.0f, Coordinate::Local);
+		case Up: AddForce(0.0f, speed, Coordinate::Global);
 			break;
-		case Down: AddForce(0.0f, -7.0f, Coordinate::Local);
+		case Down: AddForce(0.0f, -speed, Coordinate::Global);
+			break;
+		case Right: AddForce(speed, 0.0f, Coordinate::Global);
+			break;
+		case Left: AddForce(-speed, 0.0f, Coordinate::Global);
 			break;
 	}
 }
 
+/*
 void Player::RotatePlayer(RotationAngle angle)
 {
 	if(currentState == DyingState)
@@ -172,15 +193,15 @@ void Player::RotatePlayer(RotationAngle angle)
 	{
 		case Right: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()+0.075f);
-			Rotate(0.01f);
+			//Rotate(0.01f);
 			break;
 		case Left: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()-0.075f);
-			Rotate(-0.01f);
+			//Rotate(-0.01f);
 			break;
 	}
 }
-
+*/
 
 void Player::Fire()
 {

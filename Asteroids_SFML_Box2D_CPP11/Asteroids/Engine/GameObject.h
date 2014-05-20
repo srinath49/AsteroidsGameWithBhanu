@@ -182,6 +182,9 @@ protected:
 	ColliderType colliderType;
 
 public:
+
+	float meterToPixel; //50 pixels to a meter
+
 	/**
 	 * The Object's Id
 	 */
