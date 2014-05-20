@@ -1,5 +1,5 @@
 
-#include "Level2.h"
+#include "Level3.h"
 
 void Level3::CreateLayers()
 {
@@ -40,6 +40,18 @@ void Level3::CreateGameObjects()
 	bigRock2->smallRock1BTexture = "SmallRock2_B1.png";
 	bigRock2->smallRock2BTexture = "SmallRock2_B2.png";
 	bigRock2->smallRock3BTexture = "SmallRock2_B3.png";
+
+	bigRock3 = new BigRock("Character4", gameEngine, true, true, Vector2(12.0f , 1.0f), "BigRock3.png", false, 1, 1);
+	bigRock3->medRockATexture = "MediumRock2_A.png";
+	bigRock3->medRockBTexture = "MediumRock2_B.png";
+
+	bigRock3->smallRock1ATexture = "SmallRock3_A1.png";
+	bigRock3->smallRock2ATexture = "SmallRock3_A2.png";
+	bigRock3->smallRock3ATexture = "SmallRock3_A3.png";
+	
+	bigRock3->smallRock1BTexture = "SmallRock3_B1.png";
+	bigRock3->smallRock2BTexture = "SmallRock3_B2.png";
+	bigRock3->smallRock3BTexture = "SmallRock3_B3.png";
 }
 
 void Level3::AddObjectsToLayers()
