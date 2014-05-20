@@ -14,14 +14,13 @@ public:
 		Right,
 		Left
 	};
-
-	/*
+	
 	enum RotationAngle
 	{
-		Right,
-		Left
+		Clock,
+		Anti
 	};
-	*/
+	
 
 	enum  PlayerState
 	{
@@ -48,7 +47,7 @@ public:
 	PlayerState GetState(){return currentState;}
 	
 	void MovePlayer(MoveDirection direction);
-	//void RotatePlayer(RotationAngle angle);
+	void RotatePlayer(RotationAngle angle);
 	
 	void AddScore(int _ScoreToAdd){Score+=_ScoreToAdd;}
 
@@ -88,5 +87,10 @@ private:
 	Engine* gameEngine;
 
 	Vector2 lookAtPoint;
+
+	sf::Clock fireClock;
+	sf::Time fireTimer;
+
+	bool firstFire;
 };
 

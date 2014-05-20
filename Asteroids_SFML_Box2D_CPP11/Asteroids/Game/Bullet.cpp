@@ -27,6 +27,9 @@ void Bullet::Start()
 	destroy = false;
 	IsTrigger(true);
 	SetTag("Bullet");
+
+	lifeClock.restart();
+	AddForce(0.0f, 150.0f, Coordinate::Local);
 }
 
 void Bullet::Update(unsigned long frameNumber)
@@ -34,9 +37,16 @@ void Bullet::Update(unsigned long frameNumber)
 	if(destroy)
 	{
 		Destroy();
+		return;
 	}
-	if(GetVelocitySize() < 8.0f)
+	if(GetVelocitySize() < 80.0f)
 	{
-		AddForce(0.0f, 15.0f, Coordinate::Local);
+		AddForce(0.0f, 50.0f, Coordinate::Local);
+		//SetRotation(GetRotationAngle());
+		//SetVelocity(GetVelocity().x, 8.0f);
+	}
+	if(lifeClock.getElapsedTime().asSeconds() > 3.0f)
+	{
+		destroy = true;
 	}
 }

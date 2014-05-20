@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Engine\Layer.h"
 #include "Game\Level1.h"
+#include "Game\Level2.h"
 #include "MenuScreenLevel.h"
 
 
@@ -10,9 +11,10 @@ void Game::Start()
 	currentLevel = 0;
 	levelToLoad = 0;
 
-	levelManager = new LevelManager(this, 2);
+	levelManager = new LevelManager(this, 3);
 	levelManager->CreateLevel(new MenuScreenLevel(this, 0));
 	levelManager->CreateLevel(new Level1(this, 1));
+	levelManager->CreateLevel(new Level2(this, 2));
 	LoadLevel(levelToLoad);
 	SetGameState(GameState::LoadingLevel);
 	//currentLevel = levelManager->GetCurrentLevel()->levelNumber;

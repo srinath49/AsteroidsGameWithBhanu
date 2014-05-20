@@ -9,7 +9,7 @@ int threadCounter = 0;
 sf::RenderWindow* rWin;
 Game* gameEngine;
 
-bool leftKey, rightKey, upKey, downKey, spaceKey, returnKey;
+bool leftKey, rightKey, upKey, downKey, spaceKey, returnKey, aKey, sKey;
 
 sf::Keyboard::Key* key;
 
@@ -64,6 +64,12 @@ void keyPress(sf::Keyboard::Key* key)
 	case sf::Keyboard::Down:
 		downKey = true;
 		break;
+	case sf::Keyboard::A:
+		aKey = true;
+		break;
+	case sf::Keyboard::S:
+		sKey = true;
+		break;
 	case sf::Keyboard::Space:
 		spaceKey = true;
 		break;
@@ -90,6 +96,12 @@ void keyRelease(sf::Keyboard::Key* key)
 		break;
 	case sf::Keyboard::Down:
 		downKey = false;
+		break;
+	case sf::Keyboard::A:
+		aKey = false;
+		break;
+	case sf::Keyboard::S:
+		sKey = false;
 		break;
 	case sf::Keyboard::Space:
 		spaceKey = false;
@@ -230,6 +242,28 @@ int main(int argc, char** argv)
 					threadCounter++;
 				}
 			}
+			/*
+			if(aKey)
+			{
+				*key = sf::Keyboard::A;
+				if(threadCounter <= 20)
+				{
+					//onKeyPressed.join();		// std::thread instance
+					onKeyPressed.launch();	// sf::Thread instance
+					threadCounter++;
+				}
+			}
+			if(sKey)
+			{
+				*key = sf::Keyboard::S;
+				if(threadCounter <= 20)
+				{
+					//onKeyPressed.join();		// std::thread instance
+					onKeyPressed.launch();	// sf::Thread instance
+					threadCounter++;
+				}
+			}
+			*/
 		}
 		
 

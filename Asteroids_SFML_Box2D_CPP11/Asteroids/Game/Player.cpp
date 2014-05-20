@@ -28,6 +28,7 @@ void Player::Start()
 	SetState(NormalState);
 	lookAtPoint = Vector2(2.0f, 2.0f);
 	speed = 7.0f;
+	firstFire = true;
 }
 
 void Player::Update(unsigned long frameNumber)
@@ -49,7 +50,7 @@ void Player::Update(unsigned long frameNumber)
 			SetState(NormalState);
 			break;
 		case NormalState:
-			RotateToLookAt(lookAtPoint);
+			//RotateToLookAt(lookAtPoint);
 			CheckCoordinates();
 			break;
 			
@@ -75,9 +76,9 @@ void Player::OnPointerMoved(Vector2 _Point)
 	//float offsetY = (heightScreen*0.5f)/meterToPixel;
 	
 	//float lookAtPositionX = _Point.x/meterToPixel; 
-	//float lookAtPositionY = _Point.x/meterToPixel;
+	//float lookAtPositionY = _Point.y/meterToPixel;
 
-	//lookAtPoint = Vector2(lookAtPositionX, lookAtPositionY);
+	//lookAtPoint = Vector2(-lookAtPositionX + offsetX, -lookAtPositionY + offsetY);
 	//printf("%f ,  %f : \n", &lookAtPositionX, &lookAtPositionY);
 	//lookAtPoint = Vector2(offsetX, offsetY);
 }
@@ -118,10 +119,16 @@ void Player::OnKeyPressed(sf::Keyboard::Key pressedKey)
 			MovePlayer(MoveDirection::Down);
 			break;
 		case sf::Keyboard::Right:
-			MovePlayer(MoveDirection::Right);
+			RotatePlayer(RotationAngle::Clock);
 			break;
 		case sf::Keyboard::Left:
-			MovePlayer(MoveDirection::Left);
+			RotatePlayer(RotationAngle::Anti);
+			break;
+		case sf::Keyboard::A:
+			RotatePlayer(RotationAngle::Clock);
+			break;
+		case sf::Keyboard::S:
+			RotatePlayer(RotationAngle::Anti);
 			break;
 		case sf::Keyboard::Space:
 			Fire();
@@ -166,42 +173,45 @@ void Player::MovePlayer(MoveDirection direction)
 	}
 	switch(direction)
 	{
-		case Up: AddForce(0.0f, speed, Coordinate::Global);
+		case Up: AddForce(0.0f, speed, Coordinate::Local);
 			break;
-		case Down: AddForce(0.0f, -speed, Coordinate::Global);
+		case Down: AddForce(0.0f, -speed, Coordinate::Local);
 			break;
-		case Right: AddForce(speed, 0.0f, Coordinate::Global);
+		/*
+		case Right: AddForce(speed, 0.0f, Coordinate::Local);
 			break;
-		case Left: AddForce(-speed, 0.0f, Coordinate::Global);
+		case Left: AddForce(-speed, 0.0f, Coordinate::Local);
 			break;
+		*/
 	}
 }
 
-/*
+
 void Player::RotatePlayer(RotationAngle angle)
 {
 	if(currentState == DyingState)
 	{
 		return;
 	}
-
+	/*
 	if(collisionBox->GetAngularVelocity() >= 3.0)
 	{
 		return;
 	}
+	*/
 	switch(angle)
 	{
-		case Right: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.05f);
+		case Clock: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()+0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()+0.075f);
-			//Rotate(0.01f);
+			Rotate(0.04f);
 			break;
-		case Left: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.05f);
+		case Anti: //collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity()-0.05f);
 			//collisionBox->SetTransform(collisionBox->GetPosition(), this->GetRotationAngle()-0.075f);
-			//Rotate(-0.01f);
+			Rotate(-0.04f);
 			break;
 	}
 }
-*/
+
 
 void Player::Fire()
 {
@@ -210,9 +220,23 @@ void Player::Fire()
 		return;
 	}
 
-	Bullet* newBullet = new Bullet("Bullet", gameEngine, true, true, position, "bullet.png", false, 1, 1);
- 	newBullet->SetRotation(this->GetRotationAngle());
-	gameEngine->GetLayer(2)->AddObjectToLayer(newBullet);
+	if(firstFire)
+	{
+		firstFire = false;
+		Bullet* newBullet = new Bullet("Bullet", gameEngine, true, true, position, "bullet.png", false, 1, 1);
+ 		newBullet->SetRotation(this->GetRotationAngle());
+		gameEngine->GetLayer(2)->AddObjectToLayer(newBullet);
+		fireTimer = fireClock.restart();
+		return;
+	}
+	float elapsed = (fireClock.getElapsedTime().asSeconds() - fireTimer.asSeconds());
+	if(elapsed  >= 0.075f )
+	{
+  		Bullet* newBullet = new Bullet("Bullet", gameEngine, true, true, position, "bullet.png", false, 1, 1);
+ 		newBullet->SetRotation(this->GetRotationAngle());
+		gameEngine->GetLayer(2)->AddObjectToLayer(newBullet);
+		fireTimer = fireClock.getElapsedTime();
+	}
 }
 
 
@@ -223,7 +247,7 @@ void Player::SlowMove()
 
 void Player::SlowRotate()
 {
-	collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity());
+	//collisionBox->SetAngularVelocity(collisionBox->GetAngularVelocity());
 }
 
 void Player::CheckCoordinates()

@@ -114,7 +114,7 @@ GameObject::GameObject(string objectName, Engine* engineRef, bool isDynamic, boo
 	currentTexture = textureHolder.front()->texture;
 	currentTexture->SetSize();
 	currentTexture->sprite->setTexture(*currentTexture->image);
-	currentTexture->sprite->setPosition(currentTexture->sprite->getPosition().x+(currentTexture->image->getSize().y*0.5f), currentTexture->sprite->getPosition().y-(currentTexture->image->getSize().y*0.5f));
+	//currentTexture->sprite->setPosition(currentTexture->sprite->getPosition().x+(currentTexture->image->getSize().y*0.5f), currentTexture->sprite->getPosition().y-(currentTexture->image->getSize().y*0.5f));
 	currentTexture->ResumeSprite();
 	currentTexture->owner = this;
 
@@ -141,9 +141,10 @@ GameObject::GameObject(string objectName, Engine* engineRef, bool isDynamic, boo
 	//Box.SetAsBox(((currentTexture->image->getSize().x*0.5f)/meterToPixel),((currentTexture->image->getSize().y*0.5f)/meterToPixel), b2Vec2((currentTexture->image->getSize().x*0.5f)/meterToPixel,(currentTexture->image->getSize().y*0.5f)/meterToPixel),  body->GetAngle());
 	//Box.SetAsBox((currentTexture->image->getSize().x/100.0f),(currentTexture->image->getSize().y/100.0f)/*, b2Vec2((currentTexture->image->getSize().x*0.5f),(currentTexture->image->getSize().y*0.5f)),  body->GetAngle()*/);
 	//Box.SetAsBox(((currentTexture->image->getSize().x*0.5f)),((currentTexture->image->getSize().y*0.5f)), b2Vec2((currentTexture->image->getSize().x*0.5f),(currentTexture->image->getSize().y*0.5f)),  body->GetAngle());
-	Box.SetAsBox((position.x/meterToPixel),(position.x/meterToPixel), b2Vec2((currentTexture->image->getSize().x*0.5f)/meterToPixel,(currentTexture->image->getSize().y*0.5f)/meterToPixel), body->GetAngle());
+	//Box.SetAsBox((position.x/meterToPixel),(position.x/meterToPixel), b2Vec2((currentTexture->image->getSize().x*0.5f)/meterToPixel,(currentTexture->image->getSize().y*0.5f)/meterToPixel), body->GetAngle());
 	//Box.SetAsBox(((currentTexture->image->getSize().x*0.02f)),((currentTexture->image->getSize().y*0.02f)), b2Vec2((currentTexture->image->getSize().x*0.02f),(currentTexture->image->getSize().y*0.02f)),  body->GetAngle());
 	//Box.SetAsBox((5.0f)/50,(5.0f)/50);
+	Box.SetAsBox((position.x/meterToPixel),(position.x/meterToPixel));
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &Box;
